@@ -71,11 +71,20 @@ public function getContrasena(){
         return false;
       
     }
+    function setCorreo($correo , $confiCorreo){
+        if($correo == $confiCorreo){
+            $this -> correo = $correo;
+            $this -> confiCorreo = $confiCorreo;
+            return true;
+        }
+        return false;
+    }
 }
   $personaRandom = new Persona();
   $personaRandom -> setNombre("Paolo");
   $personaRandom -> setApellidos("Heredia Montoya");
-$personaRandom-> setdni ("65004204V");
+  $personaRandom -> setCorreo("Hola","Hola");
+  $personaRandom-> setdni ("65004204V");
   var_dump($personaRandom);
 
 
