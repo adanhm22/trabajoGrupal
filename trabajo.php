@@ -41,9 +41,30 @@ public function getContrasena(){
       }
       return false;
     }
+
+    function setApellidos($apellidos)
+    {
+        $arrayApellidos = explode(" ",$apellidos);
+        foreach ($arrayApellidos as $apellido) {
+            $letras = str_split($apellido);
+            if(ctype_upper($letras [0])){
+            for ($i=1; $i < sizeOf($letras); $i++) {    
+                if(is_numeric($letras[$i]))
+                return false;    
+                }
+            }else{
+            return false;
+            }
+        }
+        $this->apellido = $apellidos;
+        return true;
+
+    }
   }
   $personaRandom = new Persona();
   $personaRandom -> setNombre("Paolo");
+  $personaRandom -> setApellidos("Heredia Montoya");
+
   var_dump($personaRandom);
 
 
