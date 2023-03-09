@@ -79,12 +79,25 @@ public function getContrasena(){
         }
         return false;
     }
+
+    function setDireccion($direccion)
+    {
+        $arrayDirecciones = explode(",",trim($direccion));
+        if (sizeof($arrayDirecciones) != 6) return false;
+        if (!is_numeric($arrayDirecciones[1])) return false;
+        if (!is_numeric($arrayDirecciones[3]) || strlen ($arrayDirecciones[3])!= 5) return false;
+
+        $this -> direccion = $direccion;
+        return true;
+    }
 }
   $personaRandom = new Persona();
   $personaRandom -> setNombre("Paolo");
   $personaRandom -> setApellidos("Heredia Montoya");
   $personaRandom -> setCorreo("Hola","Hola");
   $personaRandom-> setdni ("65004204V");
+
+  $personaRandom -> setDireccion("vía/nombre vía, 654,resto de datos,45632,población,pais");
   var_dump($personaRandom);
 
 
