@@ -60,11 +60,22 @@ public function getContrasena(){
         return true;
 
     }
-  }
+    function setdni($dni){
+        $letter = substr($dni, -1);
+        $numbers = substr($dni, 0, -1);
+      
+        if (substr("TRWAGMYFPDXBNJZSQVHLCKE", $numbers%23, 1) == $letter && strlen($letter) == 1 && strlen ($numbers) == 8 ){
+         $this->dni = $dni;
+            return true;
+        }
+        return false;
+      
+    }
+}
   $personaRandom = new Persona();
   $personaRandom -> setNombre("Paolo");
   $personaRandom -> setApellidos("Heredia Montoya");
-
+$personaRandom-> setdni ("65004204V");
   var_dump($personaRandom);
 
 
