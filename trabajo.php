@@ -1,5 +1,6 @@
 <?php
 //clase persona
+
 class Persona{
     private $nombre;
     private $apellido;
@@ -8,6 +9,7 @@ class Persona{
     private $confiCorreo;
     private $dni;
     private $contrasena;
+   
 //getters
 public function getNombre(){
     return $this->nombre;
@@ -90,13 +92,22 @@ public function getContrasena(){
         $this -> direccion = $direccion;
         return true;
     }
+    //limite maximo y minimo de la contraseña
+   function setContrasena($contrasena){
+    if (strlen($contrasena) >=8 && strlen($contrasena) <= 20 ) {
+        $this -> contrasena = $contrasena;
+        return true;
+    }
+    return false;
+   }
+   
 }
   $personaRandom = new Persona();
   $personaRandom -> setNombre("Paolo");
   $personaRandom -> setApellidos("Heredia Montoya");
   $personaRandom -> setCorreo("Hola","Hola");
-  $personaRandom-> setdni ("65004204V");
-
+  $personaRandom -> setdni ("65004204V");
+  $personaRandom -> setContrasena("12345678");
   $personaRandom -> setDireccion("vía/nombre vía, 654,resto de datos,45632,población,pais");
   var_dump($personaRandom);
 
