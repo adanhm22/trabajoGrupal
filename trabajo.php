@@ -95,8 +95,30 @@ public function getContrasena(){
     //limite maximo y minimo de la contraseña
    function setContrasena($contrasena){
     if (strlen($contrasena) >=8 && strlen($contrasena) <= 20 ) {
-        $this -> contrasena = $contrasena;
-        return true;
+        $nMayus = 0;$nMinus = 0; $nNumeros = 0; $nEspeciales = 0;
+            $letras = str_split($contrasena);
+            foreach ($letras as $letra) {
+                if (is_numeric($letra))
+                {
+                    $nNumeros ++;
+                } elseif (ctype_upper($letra))
+                {
+                    $nMayus ++;
+                } else if (ctype_lower($letra))
+                {
+                    $nMinus ++;
+                }else
+                {
+                    $nEspeciales ++;
+                }
+            }
+
+            if ($nMayus >= 1 && $nMinus >= 1 && $nNumeros >= 2 && $nEspeciales >= 1) 
+            {
+                
+                $this -> contrasena = $contrasena;
+                return true;
+            }
     }
     return false;
    }
@@ -107,7 +129,7 @@ public function getContrasena(){
   $personaRandom -> setApellidos("Heredia Montoya");
   $personaRandom -> setCorreo("Hola","Hola");
   $personaRandom -> setdni ("65004204V");
-  $personaRandom -> setContrasena("12345678");
+  $personaRandom -> setContrasena("12aA/asd");
   $personaRandom -> setDireccion("vía/nombre vía, 654,resto de datos,45632,población,pais");
   var_dump($personaRandom);
 
